@@ -5,35 +5,37 @@ import styled from 'styled-components';
 export default function NavBar() {
 	const router = useRouter();
 	return (
-		<nav>
-			<Link href='/'>
-				<a style={{ color: router.pathname === '/' ? 'black' : 'white' }}>Home</a>
-			</Link>{' '}
-			<Link href='/about'>
-				<a style={{ color: router.pathname === '/about' ? 'black' : 'white' }}>About</a>
-			</Link>
-			<style jsx>
-				{`
-					nav {
-						background: lightblue;
-						padding: 1rem;
-					}
-					a {
-						text-decoration: none;
-					}
-				`}
-			</style>
-		</nav>
+		<Nav>
+			<img src='/vercel.svg' />
+			<LinkWrapper>
+				<Link href='/'>
+					<a style={{ color: router.pathname === '/' ? 'black' : 'white' }}>Home</a>
+				</Link>{' '}
+				<Link href='/about'>
+					<a style={{ color: router.pathname === '/about' ? 'black' : 'white' }}>About</a>
+				</Link>
+			</LinkWrapper>
+		</Nav>
 	);
 }
 
 const Nav = styled.nav`
-	background-color: pink;
+	background-color: lightblue;
 	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.3rem;
+
+	& {
+		img {
+			width: 5rem;
+		}
+	}
 `;
 
-const Anchor = styled.a`
-	text-decoration: none;
-	cursor: pointer;
-	font-weight: 600;
+const LinkWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
 `;
